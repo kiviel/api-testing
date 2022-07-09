@@ -9,20 +9,29 @@ Desarrollo Guiado por Pruebas es una práctica de programación que consiste en 
 -204 es un estatus HTTP que indica que no esta enviando nada, pero que la peticion se cumple.
 -401 estatus HTTP que indica que el usuario No está autorizado para realizar peticiones a la API
 
---$this->withoutExceptionHandling(); 
-metodo que nos ayuda a identificar los errores con mas claridad
+Metodo que nos ayuda a identificar los errores con mas claridad
+        
+        $this->withoutExceptionHandling();
 
---En la refactorización es importante obtener el verde en el test sin que este sea modificado, ya que ese es el punto de los test
 
--la autenticacion de una API se realiza mediante token, usando el middleware 'auth:api' en la ruta
---ejemplo: Route::apiResource('posts', PostController::class )->middleware('auth:api');
+En la refactorización es importante obtener el verde en el test sin que este sea modificado, ya que ese es el punto de los test
 
--para hacer pruebas usando una autenticacion de prueba es necesario crear un usuario y decirle a la ruta que acceda como el usuario creado
---ejemplo: 
-//creamos un usuario falso para hacer las pruebas
+La autenticacion de una API se realiza mediante token, usando el middleware *'auth:api'* en la ruta
+
+**ejemplo:**
+
+        Route::apiResource('posts', PostController::class )->middleware('auth:api');
+
+Para hacer pruebas usando una autenticacion de prueba es necesario crear un usuario y decirle a la ruta que acceda como el usuario creado
+
+**ejemplo:**
+creamos un usuario falso para hacer las pruebas
+
         $user = User::factory()->create();
-//luego usamos el metodo actingAs() para autencar el usuario creado
+
+luego usamos el metodo ***actingAs()*** para autencar el usuario creado
+
         $response = $this->actingAs($user, 'api')->json('GET', "api/posts/1000");
 
-* tomar en cuenta que cuando estemos trabajando con pruebas de acceso web, este parametro de autenticación mediante token no debe configurarse
+**Importante: Tomar en cuenta que cuando estemos trabajando con pruebas de acceso web, este parametro de autenticación mediante token no debe configurarse**
 
