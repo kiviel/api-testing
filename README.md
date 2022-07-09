@@ -24,5 +24,5 @@ metodo que nos ayuda a identificar los errores con mas claridad
 //luego usamos el metodo actingAs() para autencar el usuario creado
         $response = $this->actingAs($user, 'api')->json('GET', "api/posts/1000");
 
-# tomar en cuenta que cuando estemos trabajando con pruebas de acceso web, este parametro de autenticación mediante token no debe configurarse
+* tomar en cuenta que cuando estemos trabajando con pruebas de acceso web, este parametro de autenticación mediante token no debe configurarse
 
