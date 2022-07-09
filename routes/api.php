@@ -19,4 +19,4 @@ use App\Http\Controllers\Api\PostController;
     return $request->user();
 }); */
 
-Route::apiResource('posts', PostController::class ); 
+Route::apiResource('posts', PostController::class )->middleware('auth:api'); 
